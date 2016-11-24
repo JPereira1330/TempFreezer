@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # Programador: José Claudio Pereira <Nyex>
-# TempFreezer - Ver: 0.0.4 Dev
+# TempFreezer - Ver: 0.0.5 Dev
 
 ###########################
 # CONFIGURAÇÕES DO SCRIPT #
 ###########################
 
-diretorio="/etc/TempFreezer"                # Diretorio onde sera armazenado os dados do script
+diretorio="/etc/TempFreezer"                # Caminho onde sera armazenado os dados do script
 contador=$diretorio"/contador.txt"          # Arquivo onde sera salvo a contagem
-userBackup=$diretorio"/backup.tar.gz"       # Pasta do usuario zipada em tar.gz 
-manterArq[0]="/home/biblioteca/Downloads"   # Array de diretorio que não seram apagados
+userBackup=$diretorio"/backup"              # Pasta onde fica toda 
+dirParaApagar="/home/biblioteca"            # Caminho do diretorio que sera apagado
+manterPasta="/Downloads"                    # Diretorio que não sera apagado
 vezesIniciado=5                             # Quantia de inicializações do sistema para o reset
 
 ####################
@@ -20,11 +21,14 @@ vezesIniciado=5                             # Quantia de inicializações do sis
 # Verifica se arquivo de contagem existe.
 if [ -d $diretorio -o -f $contador ]; then
 	
-	linha=$(head $contador) # Captura primeira linha do contador
+    # Captura primeira linha do contador
+	linha=$(head $contador)
 
-	if [ $linha -gt $vezesIniciado -o $linha -eq $vezesIniciado ]; # Se 'linha' for maior ou igual do que 'vezesiniciado'
+    # Se 'linha' for maior ou igual do que 'vezesiniciado'
+	if [ $linha -gt $vezesIniciado -o $linha -eq $vezesIniciado ];
 	then
-        echo "teste"
+        # rm -r $dirParaApagar!($manterArq)
+        # cp -r $userBackup /home/
 	else
 		linha_new=$(($linha + 1))
 		sed -i 's/'"$linha"'/'"$linha_new"'/g' $contador
