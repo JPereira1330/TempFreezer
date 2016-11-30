@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Programador: José Claudio Pereira <Nyex>
-# TempFreezer - Ver: 0.0.8 Dev
+# TempFreezer - Ver: 0.0.8.2 Dev
 
 ###########################
 # CONFIGURAÇÕES DO SCRIPT #
@@ -28,10 +28,11 @@ if [ -d $diretorio -o -f $contador ]; then
     	# Se 'linha' for maior ou igual do que 'vezesiniciado'
 	if [ $linha -gt $vezesIniciado -o $linha -eq $vezesIniciado ];
 	then
-		rm -r $userDir!($manterArq)	# Deleta pasta do usuario
+		find $userDir \! -name 'Downloads' -delete
+		#rm -r $userDir!($manterArq)	# Deleta pasta do usuario
         	cp -R $userBackup /home/	# Copia a pasta backup do usuario para home
 		chown -R $usuario $userDir	# Altera dono no diretorio
-		chgrp -R $usuario $usuaDir	# Altera o grupo do diretorio
+		chgrp -R $usuario $userDir	# Altera o grupo do diretorio
 		sed -i 's/'"$linha"'/'"1"'/g' $contador
 	else
 		linha_new=$(($linha + 1))
