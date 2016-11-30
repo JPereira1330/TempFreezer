@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Programador: José Claudio Pereira <Nyex>
-# TempFreezer - Ver: 0.0.7 Dev
+# TempFreezer - Ver: 0.0.8 Dev
 
 ###########################
 # CONFIGURAÇÕES DO SCRIPT #
