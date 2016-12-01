@@ -11,7 +11,7 @@ diretorio="/etc/TempFreezer"                # Caminho onde sera armazenado os da
 contador=$diretorio"/contador.txt"          # Arquivo onde sera salvo a contagem
 userBackup=$diretorio"/backup"              # Pasta onde fica toda 
 userDir="/home/biblioteca"           	    # Caminho do diretorio que sera apagado
-manterPasta="/Downloads"                    # Diretorio que não sera apagado
+manterPasta="Downloads"                     # Diretorio que não sera apagado
 usuario="biblioteca"			    # Nome do usuario
 vezesIniciado=5                             # Quantia de inicializações do sistema para o reset
 
@@ -28,8 +28,7 @@ if [ -d $diretorio -o -f $contador ]; then
     	# Se 'linha' for maior ou igual do que 'vezesiniciado'
 	if [ $linha -gt $vezesIniciado -o $linha -eq $vezesIniciado ];
 	then
-		find $userDir \! -name 'Downloads' -delete
-		#rm -r $userDir!($manterArq)	# Deleta pasta do usuario
+		find ~/* -maxdepth 0 -name $manterArq -prune -o -exec rm -rf '{}' ';'
         	cp -R $userBackup /home/	# Copia a pasta backup do usuario para home
 		chown -R $usuario $userDir	# Altera dono no diretorio
 		chgrp -R $usuario $userDir	# Altera o grupo do diretorio
