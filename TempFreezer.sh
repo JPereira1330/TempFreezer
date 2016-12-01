@@ -28,7 +28,8 @@ if [ -d $diretorio -o -f $contador ]; then
     	# Se 'linha' for maior ou igual do que 'vezesiniciado'
 	if [ $linha -gt $vezesIniciado -o $linha -eq $vezesIniciado ];
 	then
-		find ~/* -maxdepth 0 -name $manterArq -prune -o -exec rm -rf '{}' ';'
+		find ~/* -maxdepth 0 -name $manterPasta -o -exec rm -rf '{}' ';'
+		#find ~/* -maxdepth 0 -name $manterArq -prune -o -exec rm -rf '{}' ';'
         	cp -R $userBackup /home/	
 		chown -R $usuario $userDir	
 		chgrp -R $usuario $userDir	
