@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Programador: José Claudio Pereira <Nyex>
-# TempFreezer - Ver: 0.0.8.3 Dev
+# TempFreezer - Ver: 1.0.1
 
 ###########################
 # CONFIGURAÇÕES DO SCRIPT #
@@ -9,7 +9,7 @@
 
 diretorio="/etc/TempFreezer"                # Caminho onde sera armazenado os dados do script
 contador=$diretorio"/contador.txt"          # Arquivo onde sera salvo a contagem
-userBackup=$diretorio"/backup"              # Pasta onde fica toda 
+userBackup=$diretorio"/backup/biblioteca"   # Pasta onde fica toda 
 userDir="/home/biblioteca"           	    # Caminho do diretorio que sera apagado
 manterPasta="Downloads"                     # Diretorio que não sera apagado
 usuario="biblioteca"			    # Nome do usuario
@@ -29,7 +29,6 @@ if [ -d $diretorio -o -f $contador ]; then
 	if [ $linha -gt $vezesIniciado -o $linha -eq $vezesIniciado ];
 	then
 		find ~/* -maxdepth 0 -name $manterPasta -o -exec rm -rf '{}' ';'
-		#find ~/* -maxdepth 0 -name $manterArq -prune -o -exec rm -rf '{}' ';'
         	cp -R $userBackup /home/	
 		chown -R $usuario $userDir	
 		chgrp -R $usuario $userDir	
