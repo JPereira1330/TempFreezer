@@ -7,7 +7,7 @@
 # CONFIGURAÇÕES DO SCRIPT #
 ###########################
 
-diretorio="/etc/TempFreezer"                # Caminho onde sera armazenado os dados do script
+diretorio="/etc/.TempFreezer"                # Caminho onde sera armazenado os dados do script
 contador=$diretorio"/contador.txt"          # Arquivo onde sera salvo a contagem
 userBackup=$diretorio"/Backup/biblioteca"   # Pasta onde fica toda 
 userDir="/home/biblioteca"           	    # Caminho do diretorio que sera apagado
