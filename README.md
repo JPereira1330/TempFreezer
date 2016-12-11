@@ -34,9 +34,9 @@ No Arquivo __/etc/init.d/TempFreezer.sh__ você vai poder fazer todas as altera�
     diretorio="/etc/TempFreezer"                # Caminho onde sera armazenado os dados do script
     contador=$diretorio"/Contador.txt"          # Arquivo onde sera salvo a contagem
     userBackup=$diretorio"/Backup/biblioteca"   # Pasta onde fica toda 
-    userDir="/home/biblioteca"           	      # Caminho do diretorio que sera apagado
+    userDir="/home/biblioteca"                  # Caminho do diretorio que sera apagado
     manterPasta="Downloads"                     # Diretorio que não sera apagado
-    usuario="biblioteca"			                  # Nome do usuario
+    usuario="biblioteca"                        # Nome do usuario
     vezesIniciado=5                             # Quantia de inicializações do sistema para o reset
   ```
   
