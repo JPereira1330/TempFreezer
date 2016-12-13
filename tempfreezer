@@ -10,12 +10,12 @@ configs="/etc/.TempFreezer/Configs.txt"
 
 # Função que liga o script no boot do sistema
 start(){
-  sed -i 's/'"INICIALIZAO_NO_BOOT=nao"'/'"INICIALIZAO_NO_BOOT=sim"'/g' $configs
+  sed -i 's/'"INICIALIZACAO_NO_BOOT=nao"'/'"INICIALIZACAO_NO_BOOT=sim"'/g' $configs
 }
 
 # Função que desliga o script no boot do sistema
 stop(){
-  sed -i 's/'"INICIALIZAO_NO_BOOT=sim"'/'"INICIALIZAO_NO_BOOT=nao"'/g' $configs
+  sed -i 's/'"INICIALIZACAO_NO_BOOT=sim"'/'"INICIALIZACAO_NO_BOOT=nao"'/g' $configs
 }
 
 reset(){
@@ -35,7 +35,7 @@ case "$1" in
   ;;
 
   reset)
-    reset
+    	reset
   ;;
 
   *)

@@ -4,7 +4,6 @@
 # TempFreezer - Ver: 2.0.0
 # Instalador do TempFreezer
 
-
 # Metodo responsavel pelo menu
 menu(){
 
@@ -26,13 +25,15 @@ menu(){
 
   case "$opcao" in
     "1") install_rapida ;;
-    "2") echo "teste2"
-    ;;
-    "3") echo "teste3"
+    "2") echo "teste2"  ;;
+    "3") rm -R /etc/.TempFreezer
     ;;
     "4") echo "teste4"
     ;;
-    "9") echo "teste9"
+    "9") echo "Tchau!!!"
+         read
+         clear
+         exit
     ;;
     *)
       echo " [ERRO] Opção inexistente."
@@ -63,12 +64,19 @@ install_rapida(){
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Criado o arquivo Contador em /etc/.TempFreezer" >> /etc/.TempFreezer/log_instalacao.txt
 
   # Criando arquivo Configs e inicializando
-  echo "DIR_PADRAO=/etc/.TempFreezer" >> /etc/.TempFreezer/Configs.txt
-  echo "DIRETORIO_BACKUP=Biblioteca" >> /etc/.TempFreezer/Configs.txt
-  echo "VEZES_PARA_RESTAURAR=5" >> /etc/.TempFreezer/Configs.txt
-  echo "MANTER_PASTA=Downloads" >> /etc/.TempFreezer/Configs.txt
-  echo "INICIALIZAO_NO_BOOT=sim" >> /etc/.TempFreezer/Configs.txt
+  #echo "DIR_PADRAO=/etc/.TempFreezer" >> /etc/.TempFreezer/Configs.txt
+  #echo "DIRETORIO_BACKUP=Biblioteca" >> /etc/.TempFreezer/Configs.txt
+  #echo "VEZES_PARA_RESTAURAR=5" >> /etc/.TempFreezer/Configs.txt
+  #echo "MANTER_PASTA=Downloads" >> /etc/.TempFreezer/Configs.txt
+  echo "INICIALIZACAO_NO_BOOT=sim" >> /etc/.TempFreezer/Configs.txt
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Criado o arquivo Configs em /etc/.TempFreezer" >> /etc/.TempFreezer/log_instalacao.txt
+
+  # Trocar dono da pasta /etc/.TempFreezer
+  echo "+---------------------------------------------+"
+  echo "| Insira abaixo o usuario da maquina          |"
+  echo "+---------------------------------------------+"
+  read user
+  chown $user -R /etc/.TempFreezer
 
   ####
   # INSTALANDO E CONFIGURANDO SCRIPT NA INICIALIZAÇÃO DO SISTEMA
@@ -76,15 +84,21 @@ install_rapida(){
 
   echo "-- INSTALANDO E CONFIGURANDO SCRIPT NA INICIALIZAÇÃO DO SISTEMA --" >> /etc/.TempFreezer/log_instalacao.txt
 
-  # Copiando Script TF para a pasta /etc/.TempFreezer e dando permissão para executar
-  cp TF.sh /etc/.TempFreezer/TF.sh
-  chmod +x /etc/.TempFreezer/TF.sh
+  # Copiando Script TF para a pasta /etc/init.d e dando permissão para executar
+  cp TF.sh /etc/init.d/TF.sh
+  chmovd +x /etc/init.d/TF.sh
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Copiando arquivo TF para /etc/.TempFreezer e dando permissão para executar" >> /etc/.TempFreezer/log_instalacao.txt
 
   # Copiando Script tempfreezer para a pasta /etc/init.d e dando permissão para executar
-  cp tempfreezer.sh /etc/init.d/tempfreezer.sh
-  chmod +x /etc/init.d/tempfreezer.sh
+  cp tempfreezer /etc/init.d/tempfreezer
+  chmod +x /etc/init.d/tempfreezer
+  #alias tempfreezer=/etc/init.d/tempfreezer
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Copiando arquivo tempfreezer para /etc/init.d e dando permissão para executar" >> /etc/.TempFreezer/log_instalacao.txt
+
+  update-rc.d TF.sh defaults 16
+  touch /etc/rc2.d/S16tf.sh
+  chmod +x /etc/rc2.d/S16tf.sh
+  ln -S /etc/init.d/TF.sh
 
   # Deletear arquivos de instalação
   echo "+---------------------------------------------+"
@@ -98,13 +112,19 @@ install_rapida(){
 
   case "$opcao" in
     "S")
-    "s")
-      rm Instalador.sh
-      rm tempfreezer.sh
-      rm TF.sh
+      echo "teste S"
+      #rm Instalador.sh
+      #rm tempfreezer.sh
+      #rm TF.sh
       ;;
+    "s")
+      echo "teste s"
+      #rm Instalador.sh
+      #rm tempfreezer.sh
+      #rm TF.sh
+      ;;
+  esac
 }
-
 
 # Chamando menu
 menu
