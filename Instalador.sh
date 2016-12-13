@@ -15,7 +15,6 @@ menu(){
   echo "|  [ 1 ] Instalação rapida               |"
   echo "|  [ 2 ] Instalar manualmente            |"
   echo "|  [ 3 ] Remover TempFreezer V2.0        |"
-  echo "|  [ 4 ] Ajuda para escolher uma opção   |"
   echo "|  [ 9 ] Finalizar instalação            |"
   echo "|                                        |"
   echo "+----------------------------------------+"
@@ -25,10 +24,13 @@ menu(){
 
   case "$opcao" in
     "1") install_rapida ;;
-    "2") echo "teste2"  ;;
+    "2")
+      mkdir /etc/.TempFreezer
+      mkdir /etc/.TempFreezer/Backup
+      echo "0" >> /etc/.TempFreezer/Contador.txt
+      echo "INICIALIZACAO_NO_BOOT=sim" >> /etc/.TempFreezer/Configs.txt
+      ;;
     "3") rm -R /etc/.TempFreezer
-    ;;
-    "4") echo "teste4"
     ;;
     "9") echo "Tchau!!!"
          read
@@ -78,6 +80,25 @@ install_rapida(){
   read user
   chown $user -R /etc/.TempFreezer
 
+  # Criar a pasta salvar dados
+  echo "+---------------------------------------------+"
+  echo "| Deseja criar a pasta salvar dados [s/n]     |"
+  echo "+---------------------------------------------+"
+  read salvarDados
+
+  case "$salvarDados" in
+    "S")
+      mkdir ~/Downloads/.salvarDados
+      ln
+      ;;
+    "s")
+      echo "teste s"
+      rm Instalador.sh
+      rm tempfreezer.sh
+      rm TF.sh
+      ;;
+  esac
+
   ####
   # INSTALANDO E CONFIGURANDO SCRIPT NA INICIALIZAÇÃO DO SISTEMA
   ####
@@ -95,6 +116,7 @@ install_rapida(){
   #alias tempfreezer=/etc/init.d/tempfreezer
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Copiando arquivo tempfreezer para /etc/init.d e dando permissão para executar" >> /etc/.TempFreezer/log_instalacao.txt
 
+  # Inserindo na inicilização do sistema
   update-rc.d TF.sh defaults 16
   touch /etc/rc2.d/S16tf.sh
   chmod +x /etc/rc2.d/S16tf.sh
@@ -112,16 +134,14 @@ install_rapida(){
 
   case "$opcao" in
     "S")
-      echo "teste S"
-      #rm Instalador.sh
-      #rm tempfreezer.sh
-      #rm TF.sh
+      rm Instalador.sh
+      rm tempfreezer.sh
+      rm TF.sh
       ;;
     "s")
-      echo "teste s"
-      #rm Instalador.sh
-      #rm tempfreezer.sh
-      #rm TF.sh
+      rm Instalador.sh
+      rm tempfreezer.sh
+      rm TF.sh
       ;;
   esac
 }
