@@ -23,9 +23,11 @@ O TempFreezer é um script que possui o objetivo de substituir a pasta home apos
  
  1. Copie a pasta do usuario para __/etc/.TempFreezer/Backup__ e mude o dono para o usuario padrao da maquina</br>
  
- 2. Copie o arquivo __TF.sh__ para a pasta __/etc/init.d/__ e acrescente permissão de execução para o script</br>
+ 2. Copie o arquivo __TF.sh__ para a pasta __/etc/init.d/__</br>
  
  3. Copie o arquivo __tempfreezer__ para a pasta /bin/
+ 
+ [EDITANDO A PARTIR DESSE PONTO ]
  
  4. De permissão de execução para o script __TempFreezer.sh__ </br>
  ```bash
