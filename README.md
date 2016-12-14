@@ -1,4 +1,4 @@
-# TempFreezer [ Atualizando ARQUIVO ]
+# TempFreezer
 
 O TempFreezer é um script que possui o objetivo de substituir a pasta home apos um numero determinado de reinicializações.
 
@@ -13,7 +13,14 @@ O TempFreezer é um script que possui o objetivo de substituir a pasta home apos
       C - tempfreezer reset     -> Para resetar a contagem do tempfreezer
       D - tempfreezer contagem  -> Para mostrar a contagem atual
  ```
-## Instalação [ Caso utilizado instalação manual ]
+## Instalação
+
+  Existe dois modos de instalação para o script
+  
+     O primeiro: __instalação rapida__ que apos executada o script lhe fará algumas perguntas sobre o sistema e configuraçes, apos essas perguntas o TempFreezer estará funcionando.
+   
+     O segundo: __instalação manual__ você deve usar ele quando precisar de um maior nivel de personalização do script, caso sejá necessario utilizar desse metodo, 
+     [EDITANDO AINDA A PARTIR DESTE PONTO]
  
  1. Copie a pasta do usuario para __/etc/.TempFreezer/Backup__ e mude o dono para o usuario padrao da maquina</br>
  
