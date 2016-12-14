@@ -1,16 +1,23 @@
-# TempFreezer
+# TempFreezer [ Atualizando ARQUIVO ]
 
 O TempFreezer é um script que possui o objetivo de substituir a pasta home apos um numero determinado de reinicializações.
 
-## Instalação
+## Notas de atualização 2.0
+ ```html
+  1 - Desenvolvido um script para instalação
+      A - Opção de instalação rapida [ Não é necessario configurar nada apos a instalação ]
+      B - Opção de instalação manual [ Cria apenas a estrutura de arquivos necessaria ]
+  2 - Acrescentado o comando tempfreeze
+      A - tempfreezer start     -> Para ativar contagem na inicialização do sistema
+      B - tempfreezer stop      -> Para desativar contagem na inicialização do sistema
+      C - tempfreezer reset     -> Para resetar a contagem do tempfreezer
+      D - tempfreezer contagem  -> Para mostrar a contagem atual
+ ```
+## Instalação [ Caso utilizado instalação manual ]
  
- 1. Crie a seguinte pasta e arquivo dentro de: __/etc/.TempFreezer__ </br>
-  1.A Crie a pasta: __Backup__ </br>
-  1.B Crie o arquivo: __Contador.txt__ </br>
-  
- 2. Dentro de __Backup__ coloque a pasta do usuario com apenas os arquivos e diretorios padrões </br>
+ 1. Copie a pasta do usuario para __/etc/.TempFreezer/Backup__ e mude o dono para o usuario padrao da maquina</br>
  
- 3. Dentro de __/etc/init.d__ coloque o Script __TempFreezer.sh__ </br>
+ 2.  </br>
  
  4. De permissão de execução para o script __TempFreezer.sh__ </br>
  ```bash
@@ -29,7 +36,7 @@ O TempFreezer é um script que possui o objetivo de substituir a pasta home apos
  
 ## Configurações
 
-No Arquivo __/etc/init.d/TempFreezer.sh__ você vai poder fazer todas as alterações que necessitar.
+No Arquivo __/etc/init.d/TF.sh__ você vai poder fazer todas as alterações que necessitar.
   ```shell
     diretorio="/etc/TempFreezer"                # Caminho onde sera armazenado os dados do script
     contador=$diretorio"/Contador.txt"          # Arquivo onde sera salvo a contagem
