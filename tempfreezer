@@ -18,6 +18,11 @@ stop(){
   sed -i 's/'"INICIALIZACAO_NO_BOOT=sim"'/'"INICIALIZACAO_NO_BOOT=nao"'/g' $configs
 }
 
+contagem(){
+  linha=$(head $contador)
+  echo "Contagem atual: "$linha
+}
+
 reset(){
 	linha=$(head $contador)
   sed -i 's/'"$linha"'/'0'/g' $contador
@@ -34,14 +39,19 @@ case "$1" in
     stop
   ;;
 
+  contagem)
+    contagem
+  ;;
+
   reset)
     	reset
   ;;
 
   *)
     echo $"Use: $0 {start|stop|reset}"
-    echo "    start - Adicionar serviço no boot do sistema"
-    echo "    stop  - Remover serviço no boot do sistema"
-    echo "    reset - Resetar o contador do script"
+    echo "    start    - Adicionar serviço no boot do sistema"
+    echo "    stop     - Remover serviço no boot do sistema"
+    echo "    reset    - Resetar o contador do script"
+    echo "    contagem - Visualizar a contagem"
     exit 1
 esac
