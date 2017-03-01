@@ -16,7 +16,7 @@ userDir="/home/"$usuario            	      # Caminho do diretorio que sera apaga
 manterPasta="Downloads"                     # Diretorio que não sera apagado
 vezesIniciado=5                             # Quantia de inicializações do sistema para o reset
 
-TempFreezer(){
+tempfreezer(){
   # Verifica se arquivo de contagem existe
   if [ -d $diretorio -o -f $contador ]; then
 
