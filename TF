@@ -1,4 +1,15 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides: TF
+# Required-Start:
+# Required-Stop:
+# Should-Start:
+# Should-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Reseta a pasta Home
+# Description: Depois de um numero determinado de reinicializações a pasta homeé alterada
+### END INIT INFO
 
 # Programador: José Claudio Pereira <Nyex>
 # TempFreezer - Ver: 2.0.2
