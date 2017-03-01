@@ -17,10 +17,12 @@ __Itens adicionado na atualização__
  __Bugs e Problemas resolvidos__
  ```html
   - Os arquivos instalados não pertencem apenas a quem instalou.
-  - Problema ao procurar o diretorio home.
+  - Script não encontrava diretorio home.
   - Em algumas maquinas o boot acresentava 2 no contador.
-  - Tags LSB adicionadas
- ```
+  - O script recebia um aviso por não possuir Tags LSB.
+  - Os arquivos e pastas ocultas não eram deletados.
+  - Não resetava as configurações do Ligthdm
+  ```
 ## Instalação
 
   Existe dois modos de instalação para o script
