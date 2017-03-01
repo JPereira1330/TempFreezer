@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Programador: José Claudio Pereira <Nyex>
-# TempFreezer - Ver: 2.0.0
+# TempFreezer - Ver: 2.1
 # Instalador do TempFreezer
 
 # Metodo responsavel pelo menu
@@ -65,10 +65,7 @@ install_rapida(){
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Criado o arquivo Contador em /etc/.TempFreezer" >> /etc/.TempFreezer/log_instalacao.txt
 
   # Criando arquivo Configs e inicializando
-  #echo "DIR_PADRAO=/etc/.TempFreezer" >> /etc/.TempFreezer/Configs.txt
-  #echo "DIRETORIO_BACKUP=Biblioteca" >> /etc/.TempFreezer/Configs.txt
-  #echo "VEZES_PARA_RESTAURAR=5" >> /etc/.TempFreezer/Configs.txt
-  #echo "MANTER_PASTA=Downloads" >> /etc/.TempFreezer/Configs.txt
+  echo "CONTAGEM_NO_BOOT=sim" >> /etc/.TempFreezer/cont.txt
   echo "INICIALIZACAO_NO_BOOT=sim" >> /etc/.TempFreezer/Configs.txt
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Criado o arquivo Configs em /etc/.TempFreezer" >> /etc/.TempFreezer/log_instalacao.txt
 
@@ -90,13 +87,17 @@ install_rapida(){
 
   case "$salvarDados" in
     "S")
-      mkdir ~/Downloads/.salvarDados
-      ln -s ~/Downloads/.salvarDados ~/Área\ de\ Trabalho/Salvar\ Dados
+      mkdir /home/$user/Downloads/.salvarDados
+      ln -s /home/$user/Downloads/.salvarDados /home/$user/Área\ de\ Trabalho/Salvar\ Dados
+      chown -R $user /home/$user/Downloads/.salvarDados
+      chgrp -R $user /home/$user/Downloads/.salvarDados
       echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Criando pasta salvar Dados" >> /etc/.TempFreezer/log_instalacao.txt
       ;;
     "s")
-      mkdir ~/Downloads/.salvarDados
-      ln -s ~/Downloads/.salvarDados ~/Área\ de\ Trabalho/Salvar\ Dados
+      mkdir /home/$user/Downloads/.salvarDados
+      ln -s /home/$user/Downloads/.salvarDados /home/$user/Área\ de\ Trabalho/Salvar\ Dados
+      chown -R $user /home/$user/Downloads/.salvarDados
+      chgrp -R $user /home/$user/Downloads/.salvarDados
       echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Criando pasta salvar Dados" >> /etc/.TempFreezer/log_instalacao.txt
       ;;
   esac
@@ -152,6 +153,7 @@ install_rapida(){
 
   # Copiando Script TF para a pasta /etc/init.d e dando permissão para executar
   cp TF.sh /etc/init.d/TF.sh
+  sed -i 's/'"usuario=\"user\""'/'"usuario=$user"'/g' /etc/init.d/TF.sh
   chmod +x /etc/init.d/TF.sh
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Copiando arquivo TF para /etc/.TempFreezer e dando permissão para executar" >> /etc/.TempFreezer/log_instalacao.txt
 

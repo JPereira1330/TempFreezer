@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Programador: José Claudio Pereira <Nyex>
-# TempFreezer - Ver: 2.0.0
+# TempFreezer - Ver: 2.0.2
 # Controlador de inicialização do TempFreezer
 
 #Variaveis do script
 contador="/etc/.TempFreezer/Contador.txt"
 configs="/etc/.TempFreezer/Configs.txt"
+cont="/etc/.TempFreezer/cont.txt"
 
 # Função que liga o script no boot do sistema
 start(){
@@ -26,6 +27,8 @@ contagem(){
 reset(){
 	linha=$(head $contador)
   sed -i 's/'"$linha"'/'0'/g' $contador
+  linha=$(head $cont)
+  sed -i 's/'"$linha"'/'"CONTAGEM_NO_BOOT=sim"'/g' $cont
   echo "   * Contador resetado com sucesso."
 }
 
