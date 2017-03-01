@@ -3,6 +3,7 @@
 O TempFreezer é um script que possui o objetivo de substituir a pasta home apos um numero determinado de reinicializações.
 
 ## Notas de atualização 2.0
+__Itens adicionado na atualização__
  ```html
   1 - Desenvolvido um script para instalação
       A - Opção de instalação rapida [ Não é necessario configurar nada apos a instalação ]
@@ -12,6 +13,13 @@ O TempFreezer é um script que possui o objetivo de substituir a pasta home apos
       B - tempfreezer stop      -> Para desativar contagem na inicialização do sistema
       C - tempfreezer reset     -> Para resetar a contagem do tempfreezer
       D - tempfreezer contagem  -> Para mostrar a contagem atual
+ ```
+ __Bugs e Problemas resolvidos__
+ ```html
+  - Os arquivos instalados não pertencem apenas a quem instalou.
+  - Problema ao procurar o diretorio home.
+  - Em algumas maquinas o boot acresentava 2 no contador.
+  - Tags LSB adicionadas
  ```
 ## Instalação
 
