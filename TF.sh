@@ -27,6 +27,7 @@ tempfreezer(){
   	if [ $linha -gt $vezesIniciado -o $linha -eq $vezesIniciado ];
   	then
   		find $userDir/* -maxdepth 0 -name $manterPasta -o -exec rm -rf '{}' ';'
+      rm -R $userDir/.*
       cp -R $userBackup /home/
   		chown -R $usuario $userDir
   		chgrp -R $usuario $userDir
