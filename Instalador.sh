@@ -28,7 +28,7 @@ menu(){
     "3")
       rm -R /etc/.TempFreezer
       rm /bin/tempfreezer
-      rm /etc/init.d/TF.sh
+      rm /etc/init.d/TF
       rm /etc/rc2.d/S16*
     ;;
     "9") echo "Tchau!!!"
@@ -152,9 +152,9 @@ install_rapida(){
   echo "-- INSTALANDO E CONFIGURANDO SCRIPT NA INICIALIZAÇÃO DO SISTEMA --" >> /etc/.TempFreezer/log_instalacao.txt
 
   # Copiando Script TF para a pasta /etc/init.d e dando permissão para executar
-  cp TF.sh /etc/init.d/TF.sh
-  sed -i 's/'"usuario=\"user\""'/'"usuario=$user"'/g' /etc/init.d/TF.sh
-  chmod +x /etc/init.d/TF.sh
+  cp TF /etc/init.d/TF
+  sed -i 's/'"usuario=\"user\""'/'"usuario=$user"'/g' /etc/init.d/TF
+  chmod +x /etc/init.d/TF
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Copiando arquivo TF para /etc/.TempFreezer e dando permissão para executar" >> /etc/.TempFreezer/log_instalacao.txt
 
   # Copiando Script tempfreezer para a pasta /etc/init.d e dando permissão para executar
@@ -163,9 +163,9 @@ install_rapida(){
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Criando o comando tempfreezer no diretorio /bin" >> /etc/.TempFreezer/log_instalacao.txt
 
   # Inserindo na inicilização do sistema
-  `update-rc.d TF.sh defaults 16`
-  `ln -s /etc/init.d/TF.sh /etc/rc2.d/S16TF.sh`
-  `chmod +x /etc/rc2.d/S16TF.sh`
+  `update-rc.d TF defaults 16`
+  `ln -s /etc/init.d/TF /etc/rc2.d/S16TF`
+  `chmod +x /etc/rc2.d/S16TF`
   echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Inserindo o script na inicilizacao do linux" >> /etc/.TempFreezer/log_instalacao.txt
 
   # Deletear arquivos de instalação
@@ -182,13 +182,13 @@ install_rapida(){
     "S")
       rm Instalador.sh
       rm tempfreezer
-      rm TF.sh
+      rm TF
       echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Limpando arquivos de instalação" >> /etc/.TempFreezer/log_instalacao.txt
       ;;
     "s")
       rm Instalador.sh
       rm tempfreezer
-      rm TF.sh
+      rm TF
       echo "[ `date +%d/%m/%y` `date +%H:%M:%S` ] Limpando arquivos de instalação" >> /etc/.TempFreezer/log_instalacao.txt
       ;;
   esac
