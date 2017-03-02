@@ -20,10 +20,10 @@
 ###########################
 
 diretorio="/etc/.TempFreezer"               # Caminho onde sera armazenado os dados do script
-usuario="user"			                        # Nome do usuario
+usuario="user"                              # Nome do usuario
 contador=$diretorio"/Contador.txt"          # Arquivo onde sera salvo a contagem
 userBackup=$diretorio"/Backup/"$usuario     # Pasta onde fica toda
-userDir="/home/"$usuario            	      # Caminho do diretorio que sera apagado
+userDir="/home/"$usuario                    # Caminho do diretorio que sera apagado
 manterPasta="Downloads"                     # Diretorio que não sera apagado
 vezesIniciado=5                             # Quantia de inicializações do sistema para o reset
 
