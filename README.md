@@ -33,26 +33,24 @@ __Itens adicionado na atualização__
  
  1. Copie a pasta do usuario para __/etc/.TempFreezer/Backup__ e mude o dono para o usuario padrao da maquina</br>
  
- 2. Copie o arquivo __TF.sh__ para a pasta __/etc/init.d/__</br>
+ 2. Copie o arquivo __TF__ para a pasta __/etc/init.d/__</br>
  
  3. Copie o arquivo __tempfreezer__ para a pasta /bin/
  
- [EDITANDO A PARTIR DESSE PONTO ]
- 
- 4. De permissão de execução para o script __TempFreezer.sh__ </br>
+ 4. De permissão de execução para o script __TempFreezer__ </br>
  ```bash
-  chmod +x /etc/init.d/TempFreezer.sh 
+  chmod +x /etc/init.d/TempFreezer
  ```
  
  5. Adicione na lista de inicialização do sistema com os seguintes comandos </br>
  ```bash
-  update-rc.d TempFreezer.sh defaults 16
-  touch /etc/rc2.d/S16TempFreezer.sh
-  chmod +x /etc/rc2.d/S16TempFreezer.sh
-  ln -S /etc/init.d/TempFreezer.sh /etc/rc2.d/S16TempFreezer.sh
+  update-rc.d TempFreezer defaults 16
+  touch /etc/rc2.d/S16TempFreezer
+  chmod +x /etc/rc2.d/S16TempFreezer
+  ln -S /etc/init.d/TempFreezer.sh /etc/rc2.d/S16TempFreezer
  ```
  
- 6. Verifique se o arquivo /etc/TempFreezer/contador.txt foi inicializado com '0'
+ 6. Verifique se o arquivo /etc/TempFreezer/Contador.txt foi inicializado com '0'
  
 ## Configurações
 
